@@ -34,35 +34,53 @@ describe("Car", () => {
 
   describe("decelerate", () => {
     test("should decrease speed by the specified amount", () => {
-      //TODO
+      const speedToDecrease = 25;
+      car.decelerate(speedToDecrease);
+      expect(car.speed).toBe(25);
     });
 
     test("should not decrease speed below zero", () => {
-      //TODO
+      const speedToDecrease = 100;
+      car.decelerate(speedToDecrease);
+      expect(car.speed).toBe(0);
     });
 
     test("should not accept a negative amount", () => {
-      //TODO
+      expect(() => car.decelerate(-1)).toThrowError(
+        "Amount should be a positive number.",
+      );
     });
   });
 
   describe("getSpeed", () => {
-    //TODO
+    test("should return the speed it was asigned", () => {
+      expect(car.getSpeed()).toBe(50);
+    });
   });
 
   describe("stop", () => {
-    //TODO
+    test("should change speed to 0", () => {
+      car.stop();
+      expect(car.getSpeed()).toBe(0);
+    });
   });
 
   describe("calculateDistance", () => {
-    //TODO
+    test("should return distance based on speed of the car and parameter time", () => {
+      const time = 100;
+      expect(car.calculateDistance(time)).toBe(5000);
+    });
   });
 
   describe("isMoving", () => {
-    //TODO
+    test("should return true", () => {
+      expect(car.isMoving()).toBeTruthy();
+    });
   });
 
   describe("getDescription", () => {
-    //TODO
+    test("should return a string composed by the year, make and model of the car", () => {
+      expect(car.getDescription()).toBe("2023 Toyota Corolla");
+    });
   });
 });
